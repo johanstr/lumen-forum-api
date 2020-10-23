@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Thread;
+use App\Models\Topic;
+use App\Http\Resources\Thread as ThreadResource;
 use Illuminate\Http\Request;
 
 class ThreadController extends Controller
@@ -11,8 +13,7 @@ class ThreadController extends Controller
     // Retrieves all threads from the database and returns it as json
     public function index()
     {
-        $threads = Thread::all();
-
-        return response()->json($threads, 200);
+        return ThreadResource::collection(Thread::all());
     }
+
 }

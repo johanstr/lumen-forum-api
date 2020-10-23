@@ -1,4 +1,5 @@
 let thread_list_element = document.querySelector('#thread-list');
+let threads = [];
 
 window.onload = function() {
     loadThreads();
@@ -9,27 +10,29 @@ async function loadThreads()
     await fetch('http://apiforum.api/threads')
         .then(response => response.json())
         .then(data => {
-            showThreads(data);
+            console.log(data);
+            threads = data.data;
+            showThreads();
         }).
         catch(error => console.log(error));
 }
 
-function showThreads(thread_collection)
+function showThreads()
 {
-    for(let i = 0; i < thread_collection.length; i++) {
+    for(let i = 0; i < threads.length; i++) {
         let thread_item = `
-            <a href="thread.html" class="collection-item avatar collection-link">
+            <a href="${threads[i].topics}" class="collection-item avatar collection-link">
                 <img src="img/icon-php.png" alt="" class="circle">
                 <div class="row">
                 <div class="col s9">
                     <div class="row last-row">
                     <div class="col s12">
-                        <span class="title">${thread_collection[i].title}</span>
-                        <p>${thread_collection[i].description}</p>
+                        <span class="title">${threads[i].title}</span>
+                        <p>${threads[i].description}</p>
                     </div>
                     </div>
                     <div class="row last-row">
-                    <div class="col s12 post-timestamp">Moderator: SMN</div>
+                    <div class="col s12 post-timestamp">Moderator: ${threads[i].author}</div>
                     </div>
                 </div>
                 <div class="col s3">
@@ -42,4 +45,9 @@ function showThreads(thread_collection)
 
         thread_list_element.innerHTML += thread_item;
     }
+}
+
+function clickedOnThread()
+{
+
 }
