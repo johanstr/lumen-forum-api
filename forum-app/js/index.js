@@ -21,7 +21,7 @@ function showThreads()
 {
     for(let i = 0; i < threads.length; i++) {
         let thread_item = `
-            <a href="${threads[i].topics}" class="collection-item avatar collection-link">
+            <a href="thread.html?id=${threads[i].id}" class="collection-item avatar collection-link">
                 <img src="img/icon-php.png" alt="" class="circle">
                 <div class="row">
                 <div class="col s9">
@@ -45,9 +45,4 @@ function showThreads()
 
         thread_list_element.innerHTML += thread_item;
     }
-}
-
-function clickedOnThread()
-{
-
 }
