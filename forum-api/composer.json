@@ -8,7 +8,8 @@
         "php": "^7.3",
         "flipbox/lumen-generator": "^8.0",
         "fruitcake/laravel-cors": "^2.0",
-        "laravel/lumen-framework": "^8.0"
+        "laravel/lumen-framework": "^8.0",
+        "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.9.1",
